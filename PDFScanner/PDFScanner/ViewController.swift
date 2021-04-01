@@ -7,13 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    @IBAction func abrirCamera(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+         let myPickerController = UIImagePickerController()
+         myPickerController.delegate = self;
+         myPickerController.sourceType = .camera
+         present(myPickerController, animated: true, completion: nil)
+         }
+    }
 }
 
